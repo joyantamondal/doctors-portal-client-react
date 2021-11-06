@@ -3,7 +3,6 @@ import { Box } from "@mui/system";
 import React, { useState } from "react";
 import Booking from "../Booking/Booking";
 const bookings = [
- 
   {
     id: 1,
     name: "Teeth Orthodonics",
@@ -43,23 +42,25 @@ const bookings = [
 ];
 
 const AvailableAppointments = ({ date }) => {
-  const [bookingSuccess,setBookingSuccess] = useState(false);
+  const [bookingSuccess, setBookingSuccess] = useState(false);
   return (
     <Container>
-      <Typography variant="h4" sx={{ color: 'info.main', mb:3 }}>Available Appointments on {date.toDateString()}</Typography>
-     {
-        bookingSuccess && <Alert severity="success">Appointment Booked Successfully.</Alert>
-     }
+      <Typography variant="h4" sx={{ color: "info.main", mb: 3 }}>
+        Available Appointments on {date.toDateString()}
+      </Typography>
+      {bookingSuccess && (
+        <Alert severity="success">Appointment Booked Successfully.</Alert>
+      )}
 
       <Grid container spacing={2}>
-        {
-            bookings.map(booking=> <Booking 
+        {bookings.map((booking) => (
+          <Booking
             key={booking.id}
             booking={booking}
             date={date}
             setBookingSuccess={setBookingSuccess}
-            ></Booking>)
-        }
+          ></Booking>
+        ))}
       </Grid>
     </Container>
   );
